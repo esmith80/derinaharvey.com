@@ -36,4 +36,4 @@
   }
 
   console.log("Hi from Github! store.js just loaded");
-});
+})();
