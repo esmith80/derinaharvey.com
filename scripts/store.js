@@ -1,4 +1,5 @@
 console.log("store.js starting", new Date().toISOString());
+console.count("store.js execution count");
 
 
 const html = `
