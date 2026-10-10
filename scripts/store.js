@@ -1,25 +1,14 @@
 const html = `
-  <div id="shippingRestrictionOverlay">
-    <div id="shippingRestrictionModal">
-      <h2>Shipping Notice</h2>
+<dialog id="pop-up-alert">
+  <img src="https://derinaharvey.com/files/194581/high-res-logo.jpg" width="100">
+  <p><strong>**NOTICE**</strong></p>
+  <p>Canada Post has temporarily suspended parcel services to select destinations.</p>
+  <p>As a result, I cannot currently ship orders to the following countries: Austria, Belgium, Czech Republic, Denmark, Finland, France, Germany, Luxembourg, Portugal</p>
+  <p>I am closely tracking updates from the Canada Post <a target="_blank" href="https://www.canadapost-postescanada.ca/cpc/en/our-company/news-and-media/service-alerts.page">Delivery Service Disruptions Page</a>. I apologize if these changes have led to  any inconvenience. I appreciate your interest in dHb’s music and products and thank you for your continued support!<br><br>
 
-      <p>
-        Canada Post has temporarily suspended parcel service to
-        <span id="shippingCountryName">your country</span>.
-      </p>
-
-      <p>
-        We'd still be happy to help with your order! Please contact us
-        for a custom shipping quote via private courier.
-      </p>
-
-      <a id="shippingContactButton" href="/contact">
-        Contact Us
-      </a>
-
-      <button id="shippingRestrictionClose">Close</button>
-    </div>
-  </div>
+- Derina</p>
+  <button id="pop-up-alert-close">Close</button>
+</dialog>
 `;
 
 document.body.insertAdjacentHTML("beforeend", html);
@@ -44,4 +33,4 @@ if (displayPopup && (!lastSeen || Date.now() - lastSeen > oneDay)) {
   });
 }
 
-console.log("Hi from Github! store.js just loaded")
+console.log("Hi from Github! store.js just loaded");
