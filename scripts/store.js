@@ -1,13 +1,29 @@
 (() => {
-  const modalMessage = `
+const modalMessage = `
   <dialog id="pop-up-alert">
     <p><strong>SHIPPING NOTICE</strong></p>
-    <p>Canada Post has temporarily suspended parcel services to select destinations.</p>
-    <p>As a result, I cannot use Canada Post to ship orders to the following countries: Austria, Belgium, Czech Republic, Denmark, Finland, France, Germany, Luxembourg, Portugal</p>
-    <p>If you are trying to ship to one of those countries, please <a href="/contact">contact us</a> and we will get you a shipping quote. Apologies for the inconvenience, please know that I appreciate your interest in dHb’s music and products! Thanks for your support!<br><br>
-    - Derina</p>
-  <button id="pop-up-alert-close">Close</button>
-</dialog>
+
+    <p>
+      Canada Post has temporarily suspended parcel service to several international destinations, including:
+    </p>
+
+    <p>
+      <strong>Austria, Belgium, Czech Republic, Denmark, Finland, France, Germany, Luxembourg, and Portugal.</strong>
+    </p>
+
+    <p>
+      Shipping to one of these countries? We may still be able to ship your order using a private courier.
+    </p>
+
+    <p>
+      Please <a href="/contact">contact us</a> for a shipping quote, or
+      <a href="/shipping-policy">read our shipping policy</a> for more information.
+    </p>
+
+    <p>Thanks for your understanding and support!<br>— Derina</p>
+
+    <button id="pop-up-alert-close">Close</button>
+  </dialog>
 `;
 
 const existingModal = document.getElementById("pop-up-alert");
