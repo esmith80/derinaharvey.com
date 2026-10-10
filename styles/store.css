@@ -1,0 +1,26 @@
+dialog {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  max-width: 400px; /* Set maximum width */
+  width: 90%; /* Adjust to smaller screens */
+  margin: auto; /* Center horizontally */
+}
+
+#pop-up-alert-close {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-color: black;
+  border-radius: 5px;
+  background-color: #d6bd56;
+  color: white;
+  cursor: pointer;
+}
+
+#pop-up-alert-close:hover {
+  background-color: #b39b45;
+  color: white;
+}
