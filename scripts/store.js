@@ -4,11 +4,10 @@
 
   const modalMessage = `
 <dialog id="pop-up-alert">
-  <img src="https://derinaharvey.com/files/194581/high-res-logo.jpg" width="100">
-  <p><strong>**NOTICE**</strong></p>
+  <p><strong>SHIPPING NOTICE</strong></p>
   <p>Canada Post has temporarily suspended parcel services to select destinations.</p>
-  <p>As a result, I cannot currently ship orders to the following countries: Austria, Belgium, Czech Republic, Denmark, Finland, France, Germany, Luxembourg, Portugal</p>
-  <p>I am closely tracking updates from the Canada Post <a target="_blank" href="https://www.canadapost-postescanada.ca/cpc/en/our-company/news-and-media/service-alerts.page">Delivery Service Disruptions Page</a>. I apologize if these changes have led to  any inconvenience. I appreciate your interest in dHb’s music and products and thank you for your continued support!<br><br>
+  <p>As a result, I cannot use Canada Post to ship orders to the following countries: Austria, Belgium, Czech Republic, Denmark, Finland, France, Germany, Luxembourg, Portugal</p>
+  <p>If you are trying to ship to one of those countries, please <a href="/contact">contact us</a> and we will get you a shipping quote. Apologies for the inconvenience, please know that I appreciate your interest in dHb’s music and products! Thanks for your support!<br><br>
 
 - Derina</p>
   <button id="pop-up-alert-close">Close</button>
