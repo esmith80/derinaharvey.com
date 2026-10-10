@@ -25,7 +25,7 @@ const html = `
 document.body.insertAdjacentHTML("beforeend", html);
 
 const displayPopup = true;
-const hoursUntilNextPopup = 24;
+const hoursUntilNextPopup = 0;
 const oneDay = hoursUntilNextPopup * 60 * 60 * 1000;
 
 const lastSeen = localStorage.getItem("popupSeenTime");
