@@ -1,0 +1,1 @@
+This repo contains all custom html, css, scripts for derinaharvey.com
