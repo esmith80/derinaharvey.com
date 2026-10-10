@@ -1,3 +1,6 @@
+console.log("store.js starting", new Date().toISOString());
+
+
 const html = `
 <dialog id="pop-up-alert">
   <img src="https://derinaharvey.com/files/194581/high-res-logo.jpg" width="100">
