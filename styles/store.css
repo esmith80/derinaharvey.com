@@ -21,6 +21,7 @@ dialog {
 }
 
 #pop-up-alert-close:hover {
-  background-color: #b39b45;
+  /* background-color: #b39b45; */
+  background-color: #c22899;
   color: white;
 }
