@@ -27,9 +27,7 @@
     const modal = document.getElementById("pop-up-alert");
     const closeButton = document.getElementById("pop-up-alert-close");
 
-    window.addEventListener("load", () => {
-      modal.showModal();
-    });
+    modal.showModal();
 
     closeButton.addEventListener("click", () => {
       modal.close();
