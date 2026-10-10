@@ -35,12 +35,12 @@ if (existingModal) {
 document.body.insertAdjacentHTML("beforeend", modalMessage);
 
   const displayPopup = true;
-  const hoursUntilNextPopup = 0;
-  const oneDay = hoursUntilNextPopup * 60 * 60 * 1000;
+  const hoursUntilNextPopup = 24;
+  const timeToShowAgain = hoursUntilNextPopup * 60 * 60 * 1000;
 
   const lastSeen = localStorage.getItem("popupSeenTime");
 
-  if (displayPopup && (!lastSeen || Date.now() - lastSeen > oneDay)) {
+  if (displayPopup && (!lastSeen || Date.now() - lastSeen > timeToShowAgain)) {
     const modal = document.getElementById("pop-up-alert");
     const closeButton = document.getElementById("pop-up-alert-close");
 
