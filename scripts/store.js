@@ -1,4 +1,4 @@
-() => {
+(() => {
   console.log("store.js starting", new Date().toISOString());
   console.count("store.js execution count");
 
@@ -36,4 +36,4 @@
   }
 
   console.log("Hi from Github! store.js just loaded");
-};
+});
