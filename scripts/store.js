@@ -1,8 +1,8 @@
-console.log("store.js starting", new Date().toISOString());
-console.count("store.js execution count");
+() => {
+  console.log("store.js starting", new Date().toISOString());
+  console.count("store.js execution count");
 
-
-const html = `
+  const modalMessage = `
 <dialog id="pop-up-alert">
   <img src="https://derinaharvey.com/files/194581/high-res-logo.jpg" width="100">
   <p><strong>**NOTICE**</strong></p>
@@ -15,26 +15,27 @@ const html = `
 </dialog>
 `;
 
-document.body.insertAdjacentHTML("beforeend", html);
+  document.body.insertAdjacentHTML("beforeend", modalMessage);
 
-const displayPopup = true;
-const hoursUntilNextPopup = 0;
-const oneDay = hoursUntilNextPopup * 60 * 60 * 1000;
+  const displayPopup = true;
+  const hoursUntilNextPopup = 0;
+  const oneDay = hoursUntilNextPopup * 60 * 60 * 1000;
 
-const lastSeen = localStorage.getItem("popupSeenTime");
+  const lastSeen = localStorage.getItem("popupSeenTime");
 
-if (displayPopup && (!lastSeen || Date.now() - lastSeen > oneDay)) {
-  const modal = document.getElementById("pop-up-alert");
-  const closeButton = document.getElementById("pop-up-alert-close");
+  if (displayPopup && (!lastSeen || Date.now() - lastSeen > oneDay)) {
+    const modal = document.getElementById("pop-up-alert");
+    const closeButton = document.getElementById("pop-up-alert-close");
 
-  window.addEventListener("load", () => {
-    modal.showModal();
-  });
+    window.addEventListener("load", () => {
+      modal.showModal();
+    });
 
-  closeButton.addEventListener("click", () => {
-    modal.close();
-    localStorage.setItem("popupSeenTime", Date.now());
-  });
-}
+    closeButton.addEventListener("click", () => {
+      modal.close();
+      localStorage.setItem("popupSeenTime", Date.now());
+    });
+  }
 
-console.log("Hi from Github! store.js just loaded");
+  console.log("Hi from Github! store.js just loaded");
+};
