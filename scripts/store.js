@@ -10,7 +10,13 @@
 </dialog>
 `;
 
-  document.body.insertAdjacentHTML("beforeend", modalMessage);
+const existingModal = document.getElementById("pop-up-alert");
+
+if (existingModal) {
+  existingModal.remove();
+}
+
+document.body.insertAdjacentHTML("beforeend", modalMessage);
 
   const displayPopup = true;
   const hoursUntilNextPopup = 0;
