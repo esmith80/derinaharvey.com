@@ -1,4 +1,12 @@
-dialog {
+#pop-up-alert,
+#pop-up-alert p,
+#pop-up-alert a,
+#pop-up-alert button {
+  font-family: var(--content-typeface-style-stack);
+}
+
+
+#pop-up-alert {
   border: none;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
