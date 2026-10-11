@@ -23,7 +23,8 @@
   border-top: 1px solid #ddd;
 }
 
-.address-autocomplete-suggestion:hover {
+.address-autocomplete-suggestion:hover,
+.address-autocomplete-suggestion.active {
   background: #f5f5f5;
 }
 
