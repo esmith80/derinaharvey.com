@@ -19,16 +19,20 @@
   const pastShows = document.querySelector(".past-shows");
 
   if (!pastShows) {
+    console.log("No .past-shows found - exiting");
     return;
   }
 
   // Prevent duplicate initialization if Bandzoogle/Turbo
   // executes the script more than once against the same DOM.
   if (pastShows.dataset.initialized === "true") {
+    console.log("Already initialized - exiting");
     return;
   }
 
   pastShows.dataset.initialized = "true";
+
+  console.log("Past shows initializing");
 
   // -------------------------
   // DOM references
