@@ -1,7 +1,7 @@
  (() => {
   const GEOAPIFY_API_KEY = "1acd8c447fbd4c9ebfd17796a71e7b24";
 
-  const form = document.getElementById("form_885398");
+  const form = document.querySelector(".custom_form_feature form.custom_form");
 
   if (!form) {
     return;
