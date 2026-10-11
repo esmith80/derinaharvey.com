@@ -8,7 +8,7 @@
   }
 
   const addressLabel = [...form.querySelectorAll("label")].find(
-    (label) => label.textContent.trim() === "Address"
+    (label) => label.textContent.trim() === "Shipping Address"
   );
 
   if (!addressLabel) {
