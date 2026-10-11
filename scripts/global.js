@@ -16,9 +16,7 @@
     "FR", // France
     "DE", // Germany
     "LU", // Luxembourg
-    "PT", // Portugal
-
-    "CA"  // TEMPORARY: remove after testing
+    "PT" // Portugal
   ];
 
 
