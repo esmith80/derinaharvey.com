@@ -71,9 +71,6 @@
 
       /*
        * Fail open.
-       *
-       * If we cannot confidently determine the
-       * visitor's country, don't interfere with checkout.
        */
       return null;
     }
@@ -150,18 +147,8 @@
         "shippingCountryName"
       );
 
-    const closeButton =
-      document.getElementById(
-        "shippingRestrictionClose"
-      );
-
 
     countryNameElement.textContent = countryName;
-
-
-    closeButton.addEventListener("click", () => {
-      modalOverlay.style.display = "none";
-    });
 
 
     return modalOverlay;
@@ -175,12 +162,6 @@
    */
 
   function showShippingRestriction(countryName) {
-    /*
-     * Get the popup from the CURRENT page.
-     *
-     * Bandzoogle/Turbo may have replaced the body
-     * since the last time checkout was clicked.
-     */
     let modalOverlay =
       document.getElementById(
         "shippingRestrictionOverlay"
@@ -188,9 +169,8 @@
 
 
     /*
-     * If Turbo removed the old popup during
-     * navigation, create a new one in the
-     * current body.
+     * Bandzoogle/Turbo may have replaced the body.
+     * If so, create the popup again.
      */
     if (!modalOverlay) {
       modalOverlay = createPopup(countryName);
@@ -198,6 +178,24 @@
 
 
     modalOverlay.style.display = "flex";
+  }
+
+
+  /*
+   * ========================================
+   * HIDE POPUP
+   * ========================================
+   */
+
+  function hideShippingRestriction() {
+    const modalOverlay =
+      document.getElementById(
+        "shippingRestrictionOverlay"
+      );
+
+    if (modalOverlay) {
+      modalOverlay.style.display = "none";
+    }
   }
 
 
@@ -226,7 +224,6 @@
 
     /*
      * Visitor is not in an affected country.
-     * Leave checkout completely alone.
      */
     if (!blockedCountries.includes(country.code)) {
       console.log(
@@ -244,28 +241,77 @@
 
     /*
      * ========================================
-     * INTERCEPT CHECKOUT
+     * DELEGATED CLICK HANDLING
      * ========================================
      *
-     * Use event delegation rather than attaching
-     * listeners directly to Bandzoogle's checkout
-     * buttons.
+     * We handle both checkout and popup controls
+     * at the document level.
      *
-     * This means Bandzoogle can create/recreate
-     * the button and this will still work.
+     * This survives Bandzoogle replacing/restoring
+     * individual DOM elements.
      */
     document.addEventListener(
       "click",
       (event) => {
+
+        /*
+         * ----------------------------
+         * CLOSE POPUP
+         * ----------------------------
+         */
+
+        const closeButton =
+          event.target.closest(
+            "#shippingRestrictionClose"
+          );
+
+        if (closeButton) {
+          event.preventDefault();
+
+          hideShippingRestriction();
+
+          return;
+        }
+
+
+        /*
+         * ----------------------------
+         * GET SHIPPING QUOTE
+         * ----------------------------
+         *
+         * Hide the popup before navigating away.
+         * This prevents Turbo from saving a
+         * snapshot with the popup still visible.
+         */
+
+        const contactButton =
+          event.target.closest(
+            "#shippingContactButton"
+          );
+
+        if (contactButton) {
+          hideShippingRestriction();
+
+          /*
+           * Don't preventDefault().
+           *
+           * Let Bandzoogle follow the link normally.
+           */
+          return;
+        }
+
+
+        /*
+         * ----------------------------
+         * CHECKOUT
+         * ----------------------------
+         */
+
         const checkoutLink =
           event.target.closest(
             "a[href='/go/cart']"
           );
 
-
-        /*
-         * Not a checkout click.
-         */
         if (!checkoutLink) {
           return;
         }
@@ -276,23 +322,17 @@
         );
 
 
-        /*
-         * Prevent Bandzoogle checkout.
-         */
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
 
 
-        /*
-         * Show our shipping message instead.
-         */
         showShippingRestriction(country.name);
       },
 
       /*
-       * Capture phase lets us intercept the click
-       * before Bandzoogle's own click handlers.
+       * Capture phase lets us intercept checkout
+       * before Bandzoogle's handlers.
        */
       true
     );
