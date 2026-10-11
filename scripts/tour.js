@@ -73,7 +73,7 @@ function cleanUpEventBlock(descEl) {
 // Top-level cleanup function
 function cleanUpEvents() {
   // Clean up all titles
-  // document.querySelectorAll("h2.heading-tertiary, span.event-name, a.event_details span").forEach(cleanUpEventTitle);
+  document.querySelectorAll("h2.heading-tertiary, span.event-name, a.event_details span").forEach(cleanUpEventTitle);
 
   // Clean up all descriptions
   document.querySelectorAll(".event-description").forEach(cleanUpEventBlock);
