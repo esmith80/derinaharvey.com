@@ -110,14 +110,12 @@
           <h2>Shipping Notice</h2>
 
           <p>
-            Canada Post has temporarily suspended parcel service to
+            Hey! It looks like you're visiting from 
             <span id="shippingCountryName"></span>.
           </p>
 
           <p>
-            We'd still be happy to help with your order!
-            Please contact us for a custom shipping quote
-            via private courier.
+            We're happy to help with your order, but for your region, please contact us for a custom shipping quote via private courier.
           </p>
 
           <a id="shippingContactButton" href="/contact">
