@@ -16,7 +16,7 @@
     "FR", // France
     "DE", // Germany
     "LU", // Luxembourg
-    "PT" // Portugal
+    "PT"  // Portugal
   ];
 
 
@@ -88,13 +88,13 @@
 
   function createPopup(countryName) {
     /*
-     * Turbo may restore an old copy of the popup
-     * when navigating through browser history.
-     *
-     * Remove it so we always start with a clean one.
+     * Remove any existing copy so we always
+     * create a clean popup in the current body.
      */
     const existingOverlay =
-      document.getElementById("shippingRestrictionOverlay");
+      document.getElementById(
+        "shippingRestrictionOverlay"
+      );
 
     if (existingOverlay) {
       existingOverlay.remove();
@@ -108,7 +108,7 @@
           <h2>Shipping Notice</h2>
 
           <p>
-            Hi there! It looks like you're visiting from 
+            Hi there! It looks like you're visiting from
             <span id="shippingCountryName"></span>.
           </p>
 
@@ -116,11 +116,17 @@
             We're happy to help with your order, but for your country, we need you to contact us for a custom shipping quote via private courier.
           </p>
 
-          <a id="shippingContactButton" href="/custom-shipping-quote">
+          <a
+            id="shippingContactButton"
+            href="/custom-shipping-quote"
+          >
             Get Shipping Quote
           </a>
 
-          <button id="shippingRestrictionClose">
+          <button
+            id="shippingRestrictionClose"
+            type="button"
+          >
             Close
           </button>
 
@@ -135,13 +141,19 @@
 
 
     const modalOverlay =
-      document.getElementById("shippingRestrictionOverlay");
+      document.getElementById(
+        "shippingRestrictionOverlay"
+      );
 
     const countryNameElement =
-      document.getElementById("shippingCountryName");
+      document.getElementById(
+        "shippingCountryName"
+      );
 
     const closeButton =
-      document.getElementById("shippingRestrictionClose");
+      document.getElementById(
+        "shippingRestrictionClose"
+      );
 
 
     countryNameElement.textContent = countryName;
@@ -153,6 +165,39 @@
 
 
     return modalOverlay;
+  }
+
+
+  /*
+   * ========================================
+   * SHOW POPUP
+   * ========================================
+   */
+
+  function showShippingRestriction(countryName) {
+    /*
+     * Get the popup from the CURRENT page.
+     *
+     * Bandzoogle/Turbo may have replaced the body
+     * since the last time checkout was clicked.
+     */
+    let modalOverlay =
+      document.getElementById(
+        "shippingRestrictionOverlay"
+      );
+
+
+    /*
+     * If Turbo removed the old popup during
+     * navigation, create a new one in the
+     * current body.
+     */
+    if (!modalOverlay) {
+      modalOverlay = createPopup(countryName);
+    }
+
+
+    modalOverlay.style.display = "flex";
   }
 
 
@@ -181,7 +226,7 @@
 
     /*
      * Visitor is not in an affected country.
-     * Again, leave checkout completely alone.
+     * Leave checkout completely alone.
      */
     if (!blockedCountries.includes(country.code)) {
       console.log(
@@ -195,19 +240,6 @@
     console.log(
       `Affected country detected: ${country.name}. Checkout interception enabled.`
     );
-
-
-    /*
-     * We only create the popup after confirming
-     * that this visitor is affected.
-     */
-    const modalOverlay =
-      createPopup(country.name);
-
-
-    const showShippingRestriction = () => {
-      modalOverlay.style.display = "flex";
-    };
 
 
     /*
@@ -226,7 +258,9 @@
       "click",
       (event) => {
         const checkoutLink =
-          event.target.closest("a[href='/go/cart']");
+          event.target.closest(
+            "a[href='/go/cart']"
+          );
 
 
         /*
@@ -253,7 +287,7 @@
         /*
          * Show our shipping message instead.
          */
-        showShippingRestriction();
+        showShippingRestriction(country.name);
       },
 
       /*
