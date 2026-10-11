@@ -16,7 +16,7 @@ const modalMessage = `
     </p>
 
     <p>
-      Please <a href="/contact">contact us</a> for a shipping quote, or
+      Please <a href="/custom-shipping-quote">contact us</a> for a shipping quote, or
       <a href="/shipping-policy">read our shipping policy</a> for more information.
     </p>
 
